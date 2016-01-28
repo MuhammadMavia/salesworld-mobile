@@ -1,69 +1,85 @@
 angular.module('SalesWorld', ['ionic'])
 
-  /*.run(function($ionicPlatform) {
-   $ionicPlatform.ready(function() {
-   // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-   // for form inputs)
-   if (window.cordova && window.cordova.plugins.Keyboard) {
-   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-   cordova.plugins.Keyboard.disableScroll(true);
+  .run(function ($ionicPlatform, $rootScope, $state,$timeout) {
+    /*$ionicPlatform.ready(function () {
+     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+     // for form inputs)
+     if (window.cordova && window.cordova.plugins.Keyboard) {
+     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+     cordova.plugins.Keyboard.disableScroll(true);
 
-   }
-   if (window.StatusBar) {
-   // org.apache.cordova.statusbar required
-   StatusBar.styleDefault();
-   }
-   });
-   })*/
+     }
+     if (window.StatusBar) {
+     // org.apache.cordova.statusbar required
+     StatusBar.styleDefault();
+     }
+     });*/
+    $rootScope.$on('$stateChangeStart',
+      function (event, toState, toParams, fromState, fromParams) {
+        var firebaseToken = localStorage.getItem("firebaseToken");
+        $timeout(function(){
+          if (toState.name.slice(0, toState.name.indexOf(".")) === "app" && !firebaseToken) {
+            event.preventDefault();
+            $state.go("login")
+          }
+          else if ((toState.name == "login") && firebaseToken) {
+            event.preventDefault();
+            $state.go("app.home");
 
-  .constant("ref","")
-  .config(function ($stateProvider, $urlRouterProvider) {
+          }
+        });
+
+      })
+  })
+
+
+  .constant("ref", "http://localhost:3000")
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    $httpProvider.interceptors.push('httpInterceptor');
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'templates/login.html',
         controller: 'Login'
       })
-      /*.state('app', {
+      .state('app', {
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
+        controller: 'Products'
       })
-      .state('app.search', {
-        url: '/search',
+      .state('app.home', {
+        url: '/home',
         views: {
           'menuContent': {
-            templateUrl: 'templates/search.html'
+            templateUrl: 'templates/home.html'
           }
         }
       })
-      .state('app.browse', {
-        url: '/browse',
+      .state('app.newOrder', {
+        url: '/newOrder',
         views: {
           'menuContent': {
-            templateUrl: 'templates/browse.html'
+            templateUrl: 'templates/newOrder.html'
           }
         }
-      })
-      .state('app.playlists', {
-        url: '/playlists',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/playlists.html',
-            controller: 'PlaylistsCtrl'
-          }
-        }
-      })
-      .state('app.single', {
-        url: '/playlists/:playlistId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/playlist.html',
-            controller: 'PlaylistCtrl'
-          }
-        }
-      });*/
+      });
 
-    $urlRouterProvider.otherwise('login');
+    $urlRouterProvider.otherwise('/app/newOrder');
+  })
+  .filter('capitalize', function () {
+    return function (input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+  })
+  .factory("httpInterceptor", function () {
+    return {
+      request: function (config) {
+        var firebaseToken = localStorage.getItem("firebaseToken");
+        if (firebaseToken) {
+          config.url = config.url + "?firebaseToken=" + firebaseToken;
+        }
+        return config;
+      }
+    }
   });
