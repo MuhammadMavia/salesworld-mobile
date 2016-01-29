@@ -1,5 +1,5 @@
 angular.module('SalesWorld')
-  .service("Users", function (ref, $http, $state, $q) {
+  .service("Users", function (ref, $http, $state, $q, firebaseRef) {
     this.doLogin = function (user) {
       $http.post(ref + "/account/login-salesman", user)
         .then(function (success) {
@@ -25,8 +25,8 @@ angular.module('SalesWorld')
 
       return deferred.promise;
     };
-    this.doLogOut = function(){
+    this.doLogOut = function () {
       $state.go("login");
       localStorage.removeItem("firebaseToken");
-    }
+    };
   });

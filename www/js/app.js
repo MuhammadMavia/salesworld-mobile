@@ -1,6 +1,6 @@
-angular.module('SalesWorld', ['ionic'])
+angular.module('SalesWorld', ['ionic','firebase'])
 
-  .run(function ($ionicPlatform, $rootScope, $state,$timeout) {
+  .run(function ($ionicPlatform, $rootScope, $state, $timeout) {
     /*$ionicPlatform.ready(function () {
      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
      // for form inputs)
@@ -17,7 +17,7 @@ angular.module('SalesWorld', ['ionic'])
     $rootScope.$on('$stateChangeStart',
       function (event, toState, toParams, fromState, fromParams) {
         var firebaseToken = localStorage.getItem("firebaseToken");
-        $timeout(function(){
+        $timeout(function () {
           if (toState.name.slice(0, toState.name.indexOf(".")) === "app" && !firebaseToken) {
             event.preventDefault();
             $state.go("login")
@@ -34,6 +34,7 @@ angular.module('SalesWorld', ['ionic'])
 
 
   .constant("ref", "http://localhost:3000")
+  .constant("firebaseRef", "https://salesworld.firebaseio.com/")
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.interceptors.push('httpInterceptor');
     $stateProvider
