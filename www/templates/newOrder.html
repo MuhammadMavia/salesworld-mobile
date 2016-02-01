@@ -4,7 +4,7 @@
     <button class="button icon-left ion-star button-positive" ng-click="pushOrder()">Favorites</button>
     <div class="list">
       <a class="item item-thumbnail-left" ng-repeat="product in products" ng-click="selectProduct(product)">
-        <img ng-src="{{product.img || '../img/product_blank'}}">
+        <img ng-src="{{product.img || './img/product_blank'}}">
 
         <h2>{{product.name | capitalize}} {{product.size | capitalize}}</h2>
 

@@ -1,19 +1,19 @@
-angular.module('SalesWorld', ['ionic','firebase'])
+angular.module('SalesWorld', ['ionic', 'firebase', 'ngCordova'])
 
   .run(function ($ionicPlatform, $rootScope, $state, $timeout) {
-    /*$ionicPlatform.ready(function () {
-     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-     // for form inputs)
-     if (window.cordova && window.cordova.plugins.Keyboard) {
-     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-     cordova.plugins.Keyboard.disableScroll(true);
+    $ionicPlatform.ready(function () {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
 
-     }
-     if (window.StatusBar) {
-     // org.apache.cordova.statusbar required
-     StatusBar.styleDefault();
-     }
-     });*/
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
     $rootScope.$on('$stateChangeStart',
       function (event, toState, toParams, fromState, fromParams) {
         var firebaseToken = localStorage.getItem("firebaseToken");
@@ -32,7 +32,7 @@ angular.module('SalesWorld', ['ionic','firebase'])
       })
   })
 
-
+  //.constant("ref", "http://salesworld.herokuapp.com")
   .constant("ref", "http://localhost:3000")
   .constant("firebaseRef", "https://salesworld.firebaseio.com/")
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {

@@ -3,7 +3,7 @@
   <ion-content>
     <div class="list">
       <a class="item item-thumbnail-left" ng-repeat="product in products">
-        <img ng-src="{{product.img || '../img/product_blank'}}">
+        <img ng-src="{{product.img || './img/product_blank'}}">
 
         <h2>{{product.name | capitalize}} {{product.size | capitalize}}</h2>
 
