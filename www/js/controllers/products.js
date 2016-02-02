@@ -1,8 +1,6 @@
 angular.module('SalesWorld')
   .controller("Products", function ($cordovaGeolocation, $ionicPlatform, ref, Tools, $scope, Users, Products, $cordovaBackgroundGeolocation, $ionicPopup, $http, firebaseRef, $firebaseArray) {
     $scope.selectedProducts = [];
-
-
     Users.getLoggedInUser().then(function (data) {
       /* var listRef = new Firebase(firebaseRef);
        listRef = listRef.child("presence").child(data._id);

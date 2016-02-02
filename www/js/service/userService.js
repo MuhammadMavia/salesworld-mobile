@@ -17,7 +17,6 @@ angular.module('SalesWorld')
           })
     };
     this.getLoggedInUser = function () {
-      alert(1);
       var deferred = $q.defer();
       $http.get(ref + "/users/").then(
         function (success) {
