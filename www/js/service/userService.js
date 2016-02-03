@@ -1,14 +1,17 @@
 angular.module('SalesWorld')
   .service("Users", function (ref, $http, $state, $q, firebaseRef) {
     this.doLogin = function (user) {
+      user.userName = user.userName.toLowerCase();
+      user.password = user.password.toLowerCase();
       $http.post(ref + "/account/login-salesman", user)
         .then(function (success) {
             if (success.data) {
               loggedInUser = success.data;
+              console.log(success);
               localStorage.setItem("firebaseToken", success.data.firebaseToken);
               $state.go("app.home")
             }
-          else {
+            else {
               console.log(success.data)
             }
           },
