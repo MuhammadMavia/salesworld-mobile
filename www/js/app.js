@@ -27,8 +27,8 @@ angular.module('SalesWorld', ['ionic', 'firebase', 'ngCordova'])
       })
   })
 
-  //.constant("ref", "http://salesworld.herokuapp.com")
-  .constant("ref", "http://localhost:3000")
+  .constant("ref", "http://salesworld.herokuapp.com")
+  //.constant("ref", "http://localhost:3000")
   .constant("firebaseRef", "https://salesworld.firebaseio.com/")
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.interceptors.push('httpInterceptor');

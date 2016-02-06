@@ -75,3 +75,15 @@
 .menu-item-active .icon, .menu-item-active span {
   color: #fff7f4;
 }
+
+
+/* Loader CSS */
+
+.loader svg {
+  width: 75px;
+  height: 75px;
+}
+.loader-box {
+  text-align: center;
+  padding: 10% 0 10% 0
+}
