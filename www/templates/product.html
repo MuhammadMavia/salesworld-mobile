@@ -1,0 +1,36 @@
+<ion-view view-title="New Order">
+    <ion-content ng-class="{expanded:isExpanded}" class="">
+
+
+
+        <div class="list half">
+            <div class="card card-gallery item item-text-wrap" ng-repeat="product in products" ng-if="$even">
+                <div class="ink dark-bg">
+                    <h2>{{product.name | capitalize}} ({{product.size | capitalize}}) {{"Rs. "+product.price}}</h2>
+
+                    <img class="full-image" ng-src="{{product.img || 'img/product_blank.png'}} ">
+                </div>
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item stable-bg assertive" ng-click="selectProduct(product)">
+                        <i class="icon ion-plus-round"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="list half">
+            <div class="card card-gallery item item-text-wrap" ng-repeat="product in products" ng-if="$odd">
+                <div class="ink dark-bg">
+                    <h2>{{product.name | capitalize}} ({{product.size | capitalize}}) {{"Rs. "+product.price}}</h2>
+
+                    <img class="full-image" ng-src="{{product.img || 'img/product_blank.png'}} ">
+                </div>
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item stable-bg assertive" ng-click="selectProduct(product)">
+                        <i class="icon ion-plus-round"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <button ng-disabled="!selectedProducts.length" ng-click="pushOrder()" id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900"><i class="icon ion-paper-airplane"></i></button>
+</ion-view>

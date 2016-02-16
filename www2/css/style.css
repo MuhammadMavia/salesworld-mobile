@@ -1,0 +1,89 @@
+.menu-content-bg {
+  background: #5dade2;
+}
+
+.menu-had {
+  color: #ffffff;
+  border-bottom: 2px solid #1276ab;
+  text-align: center;
+  background: #387ef5;
+}
+
+.menu-had b {
+  font-size: 22px;
+  padding: 0 0 7% 0;
+}
+
+.menu-img-box {
+  margin-top: 10%;
+  height: 125px;
+  width: 125px;
+  display: inline-block;
+  border: 6px solid #1276ab;
+  border-radius: 100%;
+}
+
+.menu-img-box img {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+}
+
+.menu-icon-1 {
+  text-align: right;
+}
+
+.menu-icon-1 a, .menu-icon-2 a {
+  color: #fff;
+  margin-top: 130px;
+}
+
+.menu-icon-2 {
+  text-align: left;
+}
+
+.menu-body {
+  background: #5dade2;
+}
+
+.menu-sign-out {
+  margin-right: 5%;
+  float: right;
+}
+
+.menu-sign-out button {
+  color: #fff;
+}
+
+.menu-item-inactive {
+  border: none;
+  background: #5dade2;
+  border-left: 7px solid transparent;
+}
+
+.menu-item-inactive .icon, .menu-item-inactive span {
+  color: #ccc;
+}
+
+.menu-item-active {
+  border: none;
+  background: #5dade2;
+  border-left: 7px solid #ff0000;
+
+}
+
+.menu-item-active .icon, .menu-item-active span {
+  color: #fff7f4;
+}
+
+
+/* Loader CSS */
+
+.loader svg {
+  width: 75px;
+  height: 75px;
+}
+.loader-box {
+  text-align: center;
+  padding: 10% 0 10% 0
+}

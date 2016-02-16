@@ -1,0 +1,113 @@
+<!--
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Left</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close ui-sref="login">
+          Login
+        </ion-item>
+        <ion-item menu-close ui-sref="app.productsList">
+          Products
+        </ion-item>
+        <ion-item menu-close href="#/app/browse">
+          Browse
+        </ion-item>
+        <ion-item menu-close href="#/app/playlists">
+          Playlists
+        </ion-item>
+        <ion-item menu-close ng-click="doLogOut()">
+          Logout
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+-->
+<ion-side-menus enable-menu-with-back-views="false">
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="menu-content-bg">
+
+    <div class="menu-had">
+      <div class="row">
+        <span class="col-25 menu-icon-1">
+          <!--<a class="button button-icon icon ion-ios-plus-empty"></a>-->
+        </span>
+
+        <div class="col-50">
+          <div class="menu-img-box">
+            <img ng-src="{{loggedInUser.profilePic || './img/blank-profile-pic.jpeg'}}">
+          </div>
+        </div>
+
+        <span class="col-25 menu-icon-2">
+          <!--<a class="button button-icon icon ion-email"></a>-->
+        </span>
+      </div>
+      <p>
+        <b>{{loggedInUser.firstName | capitalize}} {{loggedInUser.lastName | capitalize}}</b>
+      </p>
+    </div>
+    <div class="menu-body bg-positive">
+      <div class="list">
+
+
+        <a ui-sref-active="menu-item-active" class="item item-icon-left  menu-item-inactive menu-item-active"
+           menu-close ui-sref="app.home">
+          <i class="icon ion-cube"></i>
+          <span>Products</span>
+          <span class="badge badge-assertive">{{products.length}}</span>
+        </a>
+
+        <a ui-sref-active="menu-item-active" class="item item-icon-left  menu-item-inactive menu-item-active"
+           menu-close ui-sref="app.newOrder">
+          <i class="icon ion-ios-cart"></i>
+          <span>New Order</span>
+        </a>
+
+       <!-- <a ui-sref-active="menu-item-active" class="item item-icon-left  menu-item-inactive menu-item-active"
+           menu-close ui-sref="app.newOrder">
+          <i class="icon ion-chatbubble-working"></i>
+          <span>Chat</span>
+        </a>-->
+
+      </div>
+
+      <div menu-close class="menu-sign-out">
+
+        <button ng-click="doLogOut()" class="button icon-left ion-power button-clear" style="color: #fff">SIGN OUT
+        </button>
+
+      </div>
+
+    </div>
+
+  </ion-side-menu>
+</ion-side-menus>

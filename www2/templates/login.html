@@ -1,0 +1,22 @@
+<ion-view>
+  <ion-header-bar class="bar bar-positive">
+    <h1 class="title">Login</h1>
+  </ion-header-bar>
+  <ion-content class="has-bouncing has-header has-subheader">
+    <form name="LoginForm" ng-submit="doLogin(user)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input required type="email" ng-model="user.userName">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input required type="password" ng-model="user.password">
+        </label>
+        <label class="item">
+          <button ng-disabled="!user.password || !user.userName" class="button button-block button-positive" type="submit">Log in</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

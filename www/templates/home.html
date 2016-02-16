@@ -1,15 +1,36 @@
-<ion-view class="Products">
-
-  <ion-content>
-    <div class="list">
-      <a class="item item-thumbnail-left" ng-repeat="product in products">
-        <img ng-src="{{product.img || './img/product_blank'}}">
-
-        <h2>{{product.name | capitalize}} {{product.size | capitalize}}</h2>
-
-        <p>Rs. {{product.price}}</p>
+<ion-view view-title="Home">
+  <ion-content ng-class="{expanded:$scope.isExpanded}">
+    <div class="hero slide-up" style="background-image: url('img/profile-bg.jpg');">
+      <div class="content">
+        <div ng-if="loggedInUser.profilePic" class="avatar"
+             style="background-image: url({{loggedInUser.profilePic}});"></div>
+        <div ng-if="!loggedInUser.profilePic" class="avatar" style="background-image: url(img/logo.png);"></div>
+        <h3><a class="light">{{loggedInUser.firstName | capitalize}} {{loggedInUser.lastName | capitalize}}</a></h3>
+        <h4>{{loggedInUser.userName}}</h4>
+      </div>
+    </div>
+    <div class="tabs tabs-dark tabs-icon-top static">
+      <a ui-sref="app.activity" class="tab-item">
+        <i class="icon ion-ribbon-b"></i> Company
       </a>
+      <!-- <a ui-sref="app.friends" class="tab-item">
+          <i class="icon ion-ribbon-b"></i> Company
+      </a> -->
+      <a ui-sref="app.product" class="tab-item">
+        <i class="icon ion-ios-cart"></i> New order
+      </a>
+    </div>
+    <h4 class="content padding double-padding-x">Products</h4>
 
+    <div class="list animate-fade-slide-in-right">
+      <a ui-sref="app.friends" class="item item-avatar item-icon-right" ng-repeat="product in products">
+        <img ng-src="{{product.img || 'img/product_blank.png'}} ">
+
+        <h2>{{product.name | capitalize}} <i class="muted">{{product.size | capitalize}}</i></h2>
+
+        <p>{{"Rs. "+product.price}}</p>
+        <!-- <i class="muted">{{product.size}}</i> -->
+      </a>
 
     </div>
   </ion-content>
